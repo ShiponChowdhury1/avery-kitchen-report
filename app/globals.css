@@ -24,3 +24,83 @@ body {
   color: var(--foreground);
   font-family: var(--font-roboto), sans-serif;
 }
+
+/* Optimized PDF & Print Styles for Single Page A4 Portrait */
+@page {
+  size: A4 portrait;
+  margin: 4mm 8mm;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    zoom: 0.88; /* Sized up from 0.84 to reduce empty bottom space while fitting perfectly on A4 */
+  }
+
+  /* Hide screen-only elements */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Force top-level container to fill A4 sheet cleanly */
+  main {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    height: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Prevent page breaks inside critical sections */
+  section {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Prevent collapsing of responsive flex/grid layouts on printing viewport widths */
+  .flex-col.md\:flex-row {
+    flex-direction: row !important;
+    display: flex !important;
+  }
+
+  .grid-cols-1.md\:grid-cols-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+
+  .grid-cols-1.md\:grid-cols-5 {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+
+  .md\:col-span-3 {
+    grid-column: span 3 / span 3 !important;
+  }
+
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2 !important;
+  }
+
+
+  footer {
+    margin-top: 1.25rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    border-top: 1px solid #f3f4f6 !important;
+  }
+}

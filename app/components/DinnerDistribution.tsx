@@ -12,7 +12,6 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend,
 } from "recharts";
 
 const barData = [
@@ -36,60 +35,60 @@ export default function DinnerDistribution() {
 
   if (!mounted) {
     return (
-      <div className="h-[300px] flex items-center justify-center text-gray-400">
+      <div className="h-[130px] flex items-center justify-center text-gray-400">
         Loading charts...
       </div>
     );
   }
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm h-full flex flex-col">
-      <h3 className="text-lg font-bold text-gray-800 mb-6">Dinner Distribution</h3>
+    <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm h-full flex flex-col">
+      <h3 className="text-sm font-bold text-gray-800 mb-4">Dinner Distribution</h3>
       
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center flex-1">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center flex-1">
         {/* Bar Chart (takes 3/5 width on large screens) */}
-        <div className="lg:col-span-3 h-[250px] w-full">
+        <div className="md:col-span-3 h-[130px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={barData}
-              margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
-              barGap={4}
+              margin={{ top: 5, right: 5, left: -25, bottom: 0 }}
+              barGap={3}
             >
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
               <XAxis 
                 dataKey="name" 
                 tickLine={false} 
                 axisLine={false} 
-                tick={{ fill: '#6b7280', fontSize: 12 }} 
+                tick={{ fill: '#6b7280', fontSize: 10 }} 
               />
               <YAxis 
                 tickLine={false} 
                 axisLine={false} 
-                tick={{ fill: '#6b7280', fontSize: 12 }} 
+                tick={{ fill: '#6b7280', fontSize: 10 }} 
                 domain={[0, 7]}
                 ticks={[0, 2, 4, 6]}
               />
               <Tooltip 
-                contentStyle={{ backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #e5e7eb' }}
+                contentStyle={{ backgroundColor: '#fff', borderRadius: '6px', border: '1px solid #e5e7eb', fontSize: '10px', padding: '4px 8px' }}
                 cursor={{ fill: '#f9fafb' }}
               />
-              <Bar dataKey="Home" fill="#3A7D6C" radius={[4, 4, 0, 0]} barSize={16} />
-              <Bar dataKey="Restaurant" fill="#E07055" radius={[4, 4, 0, 0]} barSize={16} />
+              <Bar dataKey="Home" fill="#3A7D6C" radius={[3, 3, 0, 0]} barSize={12} />
+              <Bar dataKey="Restaurant" fill="#E07055" radius={[3, 3, 0, 0]} barSize={12} />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Pie Chart (takes 2/5 width on large screens) */}
-        <div className="lg:col-span-2 flex flex-col items-center justify-center">
-          <div className="h-[180px] w-full relative flex items-center justify-center">
+        <div className="md:col-span-2 flex flex-col items-center justify-center">
+          <div className="h-[90px] w-full relative flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={pieData}
                   cx="50%"
                   cy="50%"
-                  innerRadius={50}
-                  outerRadius={75}
+                  innerRadius={25}
+                  outerRadius={40}
                   paddingAngle={3}
                   dataKey="value"
                 >
@@ -103,17 +102,17 @@ export default function DinnerDistribution() {
             
             {/* Center Text */}
             <div className="absolute text-center">
-              <span className="text-xs text-gray-400 font-medium block">Total Meals</span>
-              <span className="text-2xl font-extrabold text-gray-800">26</span>
+              <span className="text-[8px] text-gray-400 font-medium block leading-none">Total</span>
+              <span className="text-sm font-extrabold text-gray-800 leading-none mt-0.5 inline-block">26</span>
             </div>
           </div>
 
           {/* Custom Legend */}
-          <div className="flex gap-4 mt-2 justify-center">
+          <div className="flex gap-3 mt-1.5 justify-center">
             {pieData.map((item) => (
-              <div key={item.name} className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                <span className="text-xs font-semibold text-gray-700">
+              <div key={item.name} className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
+                <span className="text-[10px] font-semibold text-gray-600">
                   {item.name}: <span className="text-gray-900">{item.value}%</span>
                 </span>
               </div>

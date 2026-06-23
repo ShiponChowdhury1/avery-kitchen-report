@@ -7,32 +7,32 @@ export default function MostCookedMeals() {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm h-full flex flex-col justify-between">
+    <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm h-full flex flex-col justify-between">
       <div>
-        <h3 className="text-lg font-bold text-gray-800 mb-1">Most Cooked Meals</h3>
-        <p className="text-xs text-gray-400 mb-6">Top prepared meals by frequency</p>
+        <h3 className="text-sm font-bold text-gray-800 mb-0.5">Most Cooked Meals</h3>
+        <p className="text-[10px] text-gray-400 mb-4">Top prepared meals by frequency</p>
       </div>
 
-      <div className="space-y-4 flex-1 flex flex-col justify-center">
+      <div className="space-y-2.5 flex-1 flex flex-col justify-center">
         {meals.map((meal) => (
           <div key={meal.name} className="group">
-            <div className="flex justify-between items-center mb-1">
-              <div className="flex items-center gap-2">
+            <div className="flex justify-between items-center mb-0.5">
+              <div className="flex items-center gap-1.5">
                 <span
-                  className="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0"
+                  className="w-2 h-2 rounded-full inline-block flex-shrink-0"
                   style={{ backgroundColor: meal.color }}
                 />
-                <span className="text-xs font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">
+                <span className="text-[11px] font-semibold text-gray-600 group-hover:text-gray-900 transition-colors">
                   {meal.name}
                 </span>
               </div>
-              <span className="text-xs font-extrabold text-gray-800 bg-gray-50 px-2 py-0.5 rounded">
+              <span className="text-[10px] font-extrabold text-gray-800 bg-gray-50 px-1.5 py-0.25 rounded">
                 {meal.count}x
               </span>
             </div>
             
             {/* Visual scale progress bar */}
-            <div className="w-full h-1.5 bg-gray-50 rounded-full overflow-hidden">
+            <div className="w-full h-1 bg-gray-50 rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-500 ease-out"
                 style={{

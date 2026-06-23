@@ -29,8 +29,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${roboto.variable} ${dancingScript.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen bg-slate-50 text-slate-800 flex flex-col">
+      <body 
+        className="min-h-screen bg-slate-50 text-slate-800 flex flex-col"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
